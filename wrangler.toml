@@ -1,0 +1,31 @@
+name = "michael-ai"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# Custom domain: uncomment once the domain is in this Cloudflare account.
+# Wrangler attaches it and sets up DNS + TLS on deploy.
+# routes = [
+#   { pattern = "example.com", custom_domain = true },
+#   { pattern = "www.example.com", custom_domain = true },
+# ]
+
+# Static résumé page. The Worker only handles /api/*; everything else is
+# served straight from ./public.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[vars]
+CHAT_MODEL = "claude-opus-5-5"
+
+# Per-IP chat limit, enforced by Cloudflare across all isolates.
+# namespace_id is any account-unique integer string.
+[[ratelimits]]
+name = "CHAT_LIMITER"
+namespace_id = "2001"
+simple = { limit = 10, period = 60 }
+
+# Secret (not committed): ANTHROPIC_API_KEY
+#   local:  .dev.vars
+#   remote: pnpm wrangler secret put ANTHROPIC_API_KEY

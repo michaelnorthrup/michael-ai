@@ -1,19 +1,43 @@
 # michael-ai
 
-Personal site: résumé + "Ask about Michael" chat backed by Claude.
+Personal site: résumé + "Ask about Michael" chat backed by Claude. See
+[AGENTS.md](AGENTS.md) for where content comes from and what may be public.
 
-- `index.html`: the whole front end (static, no build)
-- `api/chat.ts`: Vercel function, streams Claude replies (model via `CHAT_MODEL`, default `claude-opus-5-5`, effort `low`, prompt-cached system prompt, refusal fallbacks on)
-- `api/_profile.js`: the **only** thing the bot knows. Public-safe facts only. Update it when the résumé changes.
-- `dev.ts`: local server
+## Layout
 
-## Run locally
-    echo "ANTHROPIC_API_KEY=sk-ant-..." > .env.local
-    npm run dev        # http://localhost:3000
+Single Cloudflare Worker, TypeScript, pnpm, Node 22+.
 
-## Deploy (Vercel)
-    npx vercel         # first time: link project
-    npx vercel env add ANTHROPIC_API_KEY production
-    npx vercel --prod
+| Path | Responsibility |
+|---|---|
+| `public/index.html` | Static résumé page and chat UI (no build step) |
+| `src/index.ts` | Worker entry: `/api/chat`, everything else from `public/` |
+| `src/chat.ts` | Streams Claude replies; per-IP rate limit via the `CHAT_LIMITER` binding |
+| `src/profile.ts` | Public-safe knowledge base, the only source the bot answers from |
 
-Set a monthly spend limit on the API key in the Anthropic Console. The in-function rate limit is per-instance and best-effort.
+Model comes from `CHAT_MODEL` in `wrangler.toml` (default `claude-opus-5-5`,
+effort `low`, prompt-cached system prompt, server-side refusal fallbacks).
+
+## Develop and check
+
+```sh
+pnpm install
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .dev.vars
+pnpm dev          # http://127.0.0.1:8789/
+pnpm typecheck
+```
+
+## Deploy
+
+Set the API key once per environment (and set a monthly spend limit on the
+key in the Anthropic Console):
+
+```sh
+pnpm wrangler secret put ANTHROPIC_API_KEY
+```
+
+GitHub Workers Builds: connect the repo in the Cloudflare dashboard with root
+directory `/` and deploy command `npx wrangler deploy`. Manual deploy:
+`pnpm deploy`.
+
+Custom domain: uncomment `routes` in `wrangler.toml` with a domain in the same
+Cloudflare account; Wrangler attaches it and provisions DNS and TLS on deploy.

@@ -4,7 +4,7 @@
 // facts belong here: no internal project/platform names, no compensation,
 // no colleague names, no unverified metrics.
 
-export const PROFILE = `
+export const PROFILE: string = `
 # Michael Northrup
 
 Location: Salt Lake City, Utah.
