@@ -19,8 +19,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <rect x="80" y="476" width="520" height="70" rx="35" fill="#1f2027" stroke="#383941"/>
   <circle cx="118" cy="511" r="8" fill="#3fb26b"/>
   <text x="140" y="521" font-family="Avenir Next, Avenir, Helvetica" font-size="27" font-weight="600" fill="#f1f0ea">Ask my AI · paste a job description</text>
-  <text x="1120" y="530" font-family="Avenir Next, Avenir, Helvetica" font-size="34" font-weight="700" fill="#f0a93a" text-anchor="end">$3M/mo</text>
-  <text x="1120" y="560" font-family="Avenir Next, Avenir, Helvetica" font-size="18" fill="#9698a0" text-anchor="end">revenue from models I shipped</text>
+  <text x="1120" y="530" font-family="Avenir Next, Avenir, Helvetica" font-size="30" font-weight="700" fill="#f0a93a" text-anchor="end">Agents · Evals · Platforms</text>
+  <text x="1120" y="560" font-family="Avenir Next, Avenir, Helvetica" font-size="18" fill="#9698a0" text-anchor="end">tech lead, AI Ops</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile('public/og.png');
