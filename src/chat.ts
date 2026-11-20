@@ -1,15 +1,19 @@
 import Anthropic from '@anthropic-ai/sdk';
+import type { DailyBudget } from './budget.js';
 import { PROFILE } from './profile.js';
 
 export interface Env {
   ASSETS: Fetcher;
   CHAT_LIMITER: RateLimit;
+  BUDGET: DurableObjectNamespace<DailyBudget>;
+  DAILY_MESSAGE_LIMIT: string;
   ANTHROPIC_API_KEY: string;
   CHAT_MODEL: string;
 }
 
-const MAX_TURNS = 20; // messages kept from the client history
-const MAX_CHARS = 1500; // per user message
+const MAX_TURNS = 12; // messages kept from the client history
+const MAX_CHARS = 800; // per message
+const MAX_OUTPUT_TOKENS = 1000;
 
 const SYSTEM = `You are the AI assistant on Michael Northrup's personal website. Visitors (often recruiters, hiring managers, and engineers) ask you about Michael's background, experience, skills, and how he works.
 
@@ -43,6 +47,10 @@ function cleanHistory(raw: unknown): Anthropic.Beta.BetaMessageParam[] | null {
 }
 
 export async function chat(request: Request, env: Env): Promise<Response> {
+  // Only accept calls from this site's own page.
+  const origin = request.headers.get('origin');
+  if (origin && origin !== new URL(request.url).origin) return text('Forbidden', 403);
+
   const ip = request.headers.get('cf-connecting-ip') ?? 'local';
   const { success } = await env.CHAT_LIMITER.limit({ key: ip });
   if (!success) return text("You're sending messages quickly. Give it a minute, or email Michael directly.", 429);
@@ -56,6 +64,11 @@ export async function chat(request: Request, env: Env): Promise<Response> {
   const messages = cleanHistory(body.messages);
   if (!messages) return text('Bad request', 400);
 
+  const budget = env.BUDGET.get(env.BUDGET.idFromName('global'));
+  if (!(await budget.take(Number(env.DAILY_MESSAGE_LIMIT) || 200))) {
+    return text('The chat has hit its limit for today. Email Michael at michael.northrup.data@gmail.com and he will get back to you.', 429);
+  }
+
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const encoder = new TextEncoder();
 
@@ -64,7 +77,7 @@ export async function chat(request: Request, env: Env): Promise<Response> {
       try {
         const s = client.beta.messages.stream({
           model: env.CHAT_MODEL,
-          max_tokens: 2000,
+          max_tokens: MAX_OUTPUT_TOKENS,
           betas: ['server-side-fallback-2026-07-01'],
           fallbacks: 'default',
           output_config: { effort: 'low' },
