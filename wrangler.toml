@@ -10,8 +10,8 @@ routes = [
   { pattern = "www.mnorthrup.com", custom_domain = true },
 ]
 
-# Static résumé page. The Worker only handles /api/*; everything else is
-# served straight from ./public.
+# Static résumé page. The Worker handles /api/* and the www redirect;
+# everything else is served from ./public.
 # Workers Logs: request logs plus the anonymous question log from src/chat.ts.
 [observability]
 enabled = true
@@ -19,6 +19,8 @@ enabled = true
 [assets]
 directory = "./public"
 binding = "ASSETS"
+# Run the Worker before serving files, so the www -> apex redirect applies to pages too.
+run_worker_first = true
 
 [vars]
 CHAT_MODEL = "claude-opus-5-5"

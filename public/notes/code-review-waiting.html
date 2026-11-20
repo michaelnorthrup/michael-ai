@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The real cost of code review was the waiting — Michael Northrup</title>
+<meta name="description" content="What I learned studying hundreds of pull requests as a new tech lead, and why review effort should match risk.">
+<link rel="canonical" href="https://mnorthrup.com/notes/code-review-waiting">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mnorthrup.com/notes/code-review-waiting">
+<meta property="og:title" content="The real cost of code review was the waiting">
+<meta property="og:description" content="What I learned studying hundreds of pull requests as a new tech lead, and why review effort should match risk.">
+<meta property="og:image" content="https://mnorthrup.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b5710e'/><text x='16' y='22' font-family='Avenir,sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">← Michael Northrup</a>
+  <article class="post">
+    <div class="eyebrow" style="margin-top:28px">Notes</div>
+    <h1>The real cost of code review was the waiting</h1>
+    <div class="meta">November 2026 · 3 min read</div>
+
+    <p>When I stepped into a tech lead role, the first thing I wanted to understand was where our delivery time actually went. So I looked at the data.</p>
+    <p>I went through our team's history: hundreds of pull requests and more than a thousand review comments. The finding surprised me.</p>
+
+    <h2>Reviewing wasn't the problem</h2>
+    <p>Very few pull requests ever had changes requested. The time went into the queue: almost every pull request sat waiting for someone to pick it up. We were paying the full cost of a careful review process on changes that rarely needed one.</p>
+
+    <h2>Match review effort to risk</h2>
+    <p>That led to two proposals, which the team is still working through:</p>
+    <ul>
+      <li><strong>Risk-based review levels.</strong> A throwaway spike doesn't need the same review as a first production launch. Define a few levels, from no review for experiments up to a full review before anything ships to production, and let the level decide the process.</li>
+      <li><strong>Standards short enough to follow.</strong> Our coding standards had grown into a long set of documents that neither people nor coding agents could realistically hold in their heads. The proposal condenses them into a short always-on core, rules scoped to the parts of the codebase they apply to, and checks in CI, so the standards are enforced by tooling instead of in review comments.</li>
+    </ul>
+
+    <h2>The general lesson</h2>
+    <p>Speed and quality are usually framed as a trade-off. Most of the time, the real cost is a process that applies the same weight to every change. Invest in architecture and guardrails up front, then let people move fast inside them.</p>
+
+    <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
+  </article>
+  <footer><span>© 2026 Michael Northrup</span><a href="/">mnorthrup.com</a></footer>
+</main>
+</body>
+</html>

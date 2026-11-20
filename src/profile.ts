@@ -77,6 +77,12 @@ Fintech; the role was entirely Customer Experience focused.
 - Leadership: technical leadership and architecture, AI enablement and training, cross-functional delivery, business cases, explaining technical work to non-technical audiences.
 - Domains: customer experience, HR/people tech, fintech, healthcare.
 
+## Writing on this site
+- "A surprising amount of AI enablement is platform engineering": https://mnorthrup.com/notes/ai-enablement-is-platform-work
+- "The real cost of code review was the waiting": https://mnorthrup.com/notes/code-review-waiting
+- "How this site works" (the architecture, guardrails, and cost controls of this chat): https://mnorthrup.com/notes/how-this-site-works
+- Source code for this site: https://github.com/michaelnorthrup/michael-ai
+
 ## How he works (themes he would stand behind)
 - The model is rarely the hardest part. AI adoption speeds up when teams have a clear path from idea to a secure, supported product.
 - Building one useful AI system matters; making the next ten easier to build is where impact compounds.

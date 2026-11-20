@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How this site works — Michael Northrup</title>
+<meta name="description" content="A small production AI app: a Cloudflare Worker, Claude, a grounded profile, and the guardrails that keep it honest and cheap.">
+<link rel="canonical" href="https://mnorthrup.com/notes/how-this-site-works">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mnorthrup.com/notes/how-this-site-works">
+<meta property="og:title" content="How this site works">
+<meta property="og:description" content="A small production AI app: a Cloudflare Worker, Claude, a grounded profile, and the guardrails that keep it honest and cheap.">
+<meta property="og:image" content="https://mnorthrup.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b5710e'/><text x='16' y='22' font-family='Avenir,sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">← Michael Northrup</a>
+  <article class="post">
+    <div class="eyebrow" style="margin-top:28px">Notes</div>
+    <h1>How this site works</h1>
+    <div class="meta">November 2026 · 2 min read</div>
+
+    <p>The chat on this site is a small production AI application, so it gets the same treatment I'd give one at work: grounded answers, guardrails, and a hard ceiling on cost.</p>
+
+    <h2>Architecture</h2>
+    <ul>
+      <li><strong>One Cloudflare Worker</strong> serves the static page and a single <code>/api/chat</code> endpoint that streams answers from Claude.</li>
+      <li><strong>Grounding:</strong> the model answers only from a written profile of my background. If something isn't in it, the assistant says so and points you to email instead of guessing.</li>
+      <li><strong>Fit check:</strong> paste a job description and it maps requirements to evidence, then lists honest gaps. No scores, and instructions hidden inside a posting are ignored.</li>
+    </ul>
+
+    <h2>Guardrails</h2>
+    <ul>
+      <li>It won't discuss compensation or job-search status, and it won't invent employers, dates, or numbers.</li>
+      <li>Off-topic requests and attempts to override its instructions get a polite redirect.</li>
+      <li>It speaks about me in the third person and says plainly that it's an AI.</li>
+    </ul>
+
+    <h2>Cost controls</h2>
+    <ul>
+      <li>A global daily message cap, enforced exactly across all servers by a Durable Object.</li>
+      <li>A per-visitor rate limit, size limits on messages and history, and short answers by default.</li>
+    </ul>
+    <p>Questions are logged anonymously, without IP addresses, so I can see what people ask and improve the answers.</p>
+    <p>The source is on <a href="https://github.com/michaelnorthrup/michael-ai">GitHub</a>.</p>
+
+    <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
+  </article>
+  <footer><span>© 2026 Michael Northrup</span><a href="/">mnorthrup.com</a></footer>
+</main>
+</body>
+</html>
