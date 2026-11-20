@@ -39,5 +39,5 @@ GitHub Workers Builds: connect the repo in the Cloudflare dashboard with root
 directory `/` and deploy command `npx wrangler deploy`. Manual deploy:
 `pnpm deploy`.
 
-Custom domain: uncomment `routes` in `wrangler.toml` with a domain in the same
-Cloudflare account; Wrangler attaches it and provisions DNS and TLS on deploy.
+Live at https://mnorthrup.com (www redirects to the apex). The domain is in the
+same Cloudflare account; `routes` in `wrangler.toml` attaches it on deploy.

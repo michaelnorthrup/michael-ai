@@ -3,12 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2026-11-01"
 workers_dev = true
 
-# Custom domain: uncomment once the domain is in this Cloudflare account.
-# Wrangler attaches it and sets up DNS + TLS on deploy.
-# routes = [
-#   { pattern = "example.com", custom_domain = true },
-#   { pattern = "www.example.com", custom_domain = true },
-# ]
+# mnorthrup.com is registered in this account, so these attach the domain
+# and set up DNS + TLS automatically on deploy.
+routes = [
+  { pattern = "mnorthrup.com", custom_domain = true },
+  { pattern = "www.mnorthrup.com", custom_domain = true },
+]
 
 # Static résumé page. The Worker only handles /api/*; everything else is
 # served straight from ./public.
