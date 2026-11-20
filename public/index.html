@@ -17,221 +17,207 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Michael Northrup","jobTitle":"Sr. AI Solutions Engineer & Tech Lead","url":"https://mnorthrup.com/","email":"mailto:michael.northrup.data@gmail.com","sameAs":["https://www.linkedin.com/in/m-northrup/"],"address":{"@type":"PostalAddress","addressLocality":"Salt Lake City","addressRegion":"UT"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Utah"},"knowsAbout":["Forward-deployed engineering","Applied AI","AI agents","LLM evaluation","RAG","MCP","Human-in-the-loop workflows","AI platform architecture","MLOps","Python","TypeScript"]}
 </script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b5710e'/><text x='16' y='22' font-family='Avenir,sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%231d2bd8'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:wght@500;600&display=swap">
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
-<main class="wrap">
+<header class="hero band">
+  <div class="inner">
+    <nav class="nav" aria-label="Main">
+      <a class="name" href="/">Michael Northrup</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><button type="button" id="print">Résumé PDF</button></li>
+      </ul>
+    </nav>
 
-  <header>
-    <div class="eyebrow">Applied AI · Salt Lake City</div>
-    <h1>Michael Northrup</h1>
-    <p class="lede"><strong>Forward-deployed AI engineer and tech lead.</strong> I work directly with business teams to find the problems worth solving, then build and ship the production AI systems that solve them, plus the playbooks that let other teams do the same.</p>
-    <div class="links">
-      <a class="btn primary" href="#chat">Ask my AI</a>
-      <a class="btn" href="mailto:michael.northrup.data@gmail.com">Email</a>
-      <a class="btn" href="https://www.linkedin.com/in/m-northrup/" id="linkedin">LinkedIn</a>
-      <a class="btn" href="#work">Selected work</a>
-      <button class="btn" type="button" onclick="window.print()">Résumé PDF</button>
-    </div>
-    <div class="print-contact">michael.northrup.data@gmail.com · linkedin.com/in/m-northrup · Salt Lake City, UT</div>
-    <div class="stats">
-      <div class="stat"><b>Tech lead</b><span>and one of the lead architects for AI Ops at BambooHR</span></div>
-      <div class="stat"><b>Agents &amp; evals</b><span>shipped for payroll anomaly detection, onboarding audits, and customer signals</span></div>
-      <div class="stat"><b>8+ yrs</b><span>shipping ML and AI, including models that contributed to a $3M/month revenue lift</span></div>
-    </div>
-  </header>
-
-  <div class="chat" id="chat">
-    <div class="chat-head">
-      <div class="avatar">MN</div>
-      <div>
-        <h2>Ask about Michael</h2>
-        <p>An AI assistant that knows my background</p>
+    <div class="hero-grid">
+      <div class="intro">
+        <h1>I build production AI with the teams who use it.</h1>
+        <p class="lede">Forward-deployed AI engineer and tech lead in Salt Lake City. I work with business teams to find the problems worth solving, ship the agents and platforms that solve them, and leave behind the playbooks that let the next team do it without me.</p>
+        <div class="print-contact">michael.northrup.data@gmail.com · linkedin.com/in/m-northrup · mnorthrup.com</div>
+        <dl class="facts">
+          <div><dt>Now</dt><dd>Sr. AI Solutions Engineer, tech lead, and one of the lead architects for AI Ops at BambooHR</dd></div>
+          <div><dt>Ships</dt><dd>Agents with evals and human review, document AI, and the internal platform other AI apps run on</dd></div>
+          <div><dt>Before</dt><dd>8+ years of ML at BILL, Bayesian Health, and BioFire. Master of Statistics, University of Utah</dd></div>
+        </dl>
+        <div class="cta">
+          <a class="btn solid" href="mailto:michael.northrup.data@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/m-northrup/">LinkedIn</a>
+        </div>
       </div>
-      <span class="live">Live</span>
+
+      <div class="chat" id="chat">
+        <div class="chat-head">
+          <div class="avatar" aria-hidden="true">M</div>
+          <div><b>Ask about my work</b><span>An AI assistant that answers from my résumé</span></div>
+        </div>
+        <div class="log" id="log" aria-live="polite">
+          <div class="example">Example</div>
+          <div class="msg user"><p>What is Michael working on now?</p></div>
+          <div class="msg bot"><p>He's a tech lead and one of the lead architects for AI Ops at BambooHR. Recent work:</p><ul><li>An agent-based payroll anomaly detector, built with evals and human review from the start</li><li>Document AI that checks a new client's tax filings against their payroll setup</li><li>An internal platform that turns a new AI app into a folder and a config file</li></ul></div>
+        </div>
+        <div class="chips" id="chips">
+          <button class="chip fit" data-fit>Check fit for a job description</button>
+          <button class="chip">How does he use evals and human review?</button>
+          <button class="chip">What's his forward-deployed experience?</button>
+          <button class="chip">What's his tech stack?</button>
+        </div>
+        <div class="fitbar"><span>Paste the full job description, then press Send.</span><button type="button" id="fitcancel">Cancel</button></div>
+        <form id="form">
+          <textarea id="input" rows="1" maxlength="800" placeholder="Ask anything about Michael's background…" aria-label="Your question"></textarea>
+          <button class="send" id="send" type="submit">Send</button>
+        </form>
+        <p class="disclaimer">AI answers can be imperfect. Questions are logged anonymously to improve them.</p>
+      </div>
     </div>
-    <div class="log" id="log" aria-live="polite">
-      <div class="msg bot"><p>Hi! I'm an AI assistant that knows Michael's background. Ask me about his experience, what he's built, how he works, or his skills.</p></div>
-    </div>
-    <div class="chips" id="chips">
-      <button class="chip fit" data-fit>Paste a job description to check fit</button>
-      <button class="chip">What has he shipped recently?</button>
-      <button class="chip">How does he use evals and human review?</button>
-      <button class="chip">What's his forward-deployed experience?</button>
-      <button class="chip">What's his tech stack?</button>
-    </div>
-    <div class="fitbar"><span>Fit check: paste the full job description and press Send.</span><button type="button" id="fitcancel">Cancel</button></div>
-    <form id="form">
-      <textarea id="input" rows="1" maxlength="800" placeholder="Ask anything about Michael's background…" aria-label="Your question"></textarea>
-      <button class="send" id="send" type="submit">Send</button>
-    </form>
-    <p class="disclaimer">AI-generated answers can be imperfect; for anything important, email Michael. Questions are logged anonymously to improve answers.</p>
   </div>
+</header>
 
-  <section id="work">
-    <h3 class="sec">Selected work</h3>
-    <div class="cases">
+<main class="band">
+  <div class="inner">
 
+    <section class="sec first" id="work">
+      <header><h2>Selected work</h2><p>Three projects, with the result first. Internal names are left out.</p></header>
+      <div>
+        <article class="case">
+          <div class="where">BambooHR · Payroll</div>
+          <h3>An AI auditor that payroll experts can actually check</h3>
+          <p class="result">Passed its go/no-go review. The same method is rolling out in a second audit product.</p>
+          <div class="parts">
+            <div><h4>Problem</h4><p>Payroll mistakes are expensive and experts can't review everything. An AI that flags anomalies is useless if they can't see why.</p></div>
+            <div><h4>My role</h4><p>Wrote the spec, built the system, and worked it through rounds of feedback with payroll specialists.</p></div>
+            <div><h4>Approach</h4><p>An agent with evals from day one and human review of every finding, plus a lineage tool that traces each rule to its source data. Reused for document AI that checks new clients' tax filings.</p></div>
+          </div>
+        </article>
 
-      <article class="case">
-        <div class="kicker">BambooHR · Payroll · Agents and evals</div>
-        <h4>An AI auditor that payroll experts can actually check</h4>
-        <p class="result">Passed go/no-go review · method reused for a second audit product</p>
-        <dl>
-          <dt>Problem</dt><dd>Payroll mistakes are expensive and experts can't review everything. An AI that flags anomalies is useless if the experts can't see why.</dd>
-          <dt>My role</dt><dd>Wrote the spec, built the system, and worked it through rounds of feedback with payroll specialists.</dd>
-          <dt>Approach</dt><dd>An agent-based anomaly detector with evals from day one and human review of every finding. Built a lineage tool that lets experts verify each detection rule down to its source data, with sign-offs reset whenever a rule changes. Reused the same method for document AI that reads a new client's tax filings, checks them against their payroll setup, and links every finding to its source.</dd>
+        <article class="case">
+          <div class="where">BambooHR · Platform</div>
+          <h3>Making the next AI app a folder, not weeks of tickets</h3>
+          <p class="result">Platform owner. First version live in staging, with the first apps moving on.</p>
+          <div class="parts">
+            <div><h4>Problem</h4><p>Every internal AI app rebuilt sign-in, access control, data and PII access, LLM access, and deployment, and waited weeks on the same approvals.</p></div>
+            <div><h4>My role</h4><p>Owner and architect. Audited the existing apps, wrote the plan and architecture decisions, ran the cross-team design session, and shipped the first version.</p></div>
+            <div><h4>Approach</h4><p>Pay for identity, governed data access, LLM access, and deployment once at the platform level, with fail-closed access by default.</p></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="where">BILL · Customer payments</div>
+          <h3>Turning an overlooked decline problem into revenue</h3>
+          <p class="result">$25M payment-volume opportunity and a $3M monthly revenue increase.</p>
+          <div class="parts">
+            <div><h4>Problem</h4><p>Failed customer payments were costing revenue and hurting the payment experience, and the problem had little attention.</p></div>
+            <div><h4>My role</h4><p>Found it, built the business case, pitched it, and drove it end to end, from models to the production ML foundation.</p></div>
+            <div><h4>Approach</h4><p>Predicted half of transaction declines ahead of time so the business could step in, on a monitored data lake with drift detection and repeatable retraining.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="sec" id="experience">
+      <header><h2>Experience</h2><p>Applied AI, ML engineering, and data science across HR tech, fintech, and healthcare.</p></header>
+      <div>
+        <div class="job">
+          <div><h3>Sr. AI Solutions Engineer &amp; Tech Lead</h3><div class="org">BambooHR · Salt Lake City</div></div>
+          <div class="when">Feb 2026 – now</div>
+          <ul>
+            <li>Internal forward-deployed engineer for CX, payroll, revenue, and operations teams, from discovery through deployment, adoption, and handoff.</li>
+            <li>Tech lead across AI Ops projects and one of the team's lead architects since October 2026.</li>
+            <li>Built a customer-interaction pipeline that turns support, phone, chat, and meeting conversations into product, service, and sales signals.</li>
+            <li>Built a coding-agent curriculum for the technology org, launched an AI Champions program, and run workshops, hackathons, and leadership AI training.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div><h3>Data Scientist II</h3><div class="org">BILL · Draper, UT</div></div>
+          <div class="when">Jan 2025 – Jan 2026</div>
+          <ul>
+            <li>Shipped decline-prediction models and interventions behind a $25M payment-volume opportunity and a $3M monthly revenue increase.</li>
+            <li>Architected the production ML foundation (SageMaker, S3, monitoring, drift detection) and a company-wide Feature/Train/Inference/Production framework.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div><h3>Senior Data Scientist</h3><div class="org">Preston Ventures · Aliso Viejo, CA</div></div>
+          <div class="when">Nov 2023 – May 2024</div>
+          <ul><li>Built ETL and labeling pipelines and deployed validated healthcare models, with MLflow tracking for reproducibility.</li></ul>
+        </div>
+        <div class="job">
+          <div><h3>Full Stack Data Scientist</h3><div class="org">Bayesian Health · New York, NY</div></div>
+          <div class="when">Nov 2022 – Nov 2023</div>
+          <ul><li>Deployed clinical decision-support models on EHR data into customer-facing apps, with model registries, monitoring, and automated deploys.</li></ul>
+        </div>
+        <div class="job">
+          <div><h3>Associate Data Scientist</h3><div class="org">BioFire Diagnostics · Salt Lake City</div></div>
+          <div class="when">Aug 2018 – Feb 2022</div>
+          <ul><li>Built a role-based, HIPAA-compliant data app, automated validation for customer-facing pipelines, and moved analysis workflows onto AWS.</li></ul>
+        </div>
+        <div class="job">
+          <div><h3>Earlier</h3><div class="org">Intermountain Healthcare · University of Utah research center</div></div>
+          <div class="when">2017 – 2018</div>
+          <ul><li>Survival-analysis models for employee-turnover risk and applied occupational-health research.</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="principles">
+      <header><h2>How I work</h2></header>
+      <ul class="principles">
+        <li>The model is rarely the hardest part. Teams adopt AI faster when there's a clear path from idea to a secure, supported product.</li>
+        <li>Building one useful AI system matters. Making the next ten easier to build is where the impact compounds.</li>
+        <li>Anything that touches money or sensitive data gets evals and human review from the start.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="notes">
+      <header><h2>Notes</h2><p>Short write-ups from the work.</p></header>
+      <div class="notes">
+        <a class="note-link" href="/notes/ai-enablement-is-platform-work"><h3>A surprising amount of AI enablement is platform engineering</h3><p>Why the model is rarely the hard part, and what a clear path to production looks like.</p><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="note-link" href="/notes/code-review-waiting"><h3>The real cost of code review was the waiting</h3><p>What hundreds of pull requests showed me as a new tech lead.</p><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="note-link" href="/notes/how-this-site-works"><h3>How this site works</h3><p>A small production AI app: grounding, guardrails, and a hard cost ceiling.</p><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="sec" id="skills">
+      <header><h2>Skills and education</h2></header>
+      <div class="two">
+        <dl class="skills">
+          <dt>Applied AI</dt><dd>Agents, LLM applications, RAG, LLM evaluation, MCP, human-in-the-loop workflows</dd>
+          <dt>ML</dt><dd>Predictive modeling, anomaly detection, survival analysis, forecasting, A/B testing, MLOps</dd>
+          <dt>Engineering</dt><dd>Python, TypeScript, SQL, R, FastAPI, Docker, Kubernetes, AWS, Databricks, Snowflake, dbt, MLflow, Spark, Okta/OIDC, OpenTelemetry</dd>
+          <dt>Leadership</dt><dd>Technical leadership and architecture, AI enablement and training, cross-functional delivery, business cases</dd>
         </dl>
-      </article>
-
-      <article class="case">
-        <div class="kicker">BambooHR · Platform · Architecture</div>
-        <h4>Making the next AI app a folder, not weeks of tickets</h4>
-        <p class="result">Platform owner · first version live in staging, first apps moving on</p>
-        <dl>
-          <dt>Problem</dt><dd>Every internal AI app rebuilt the same sign-in, access control, data and PII access, LLM access, and deployment, and waited weeks on the same approvals.</dd>
-          <dt>My role</dt><dd>Owner and architect. Audited the existing apps, wrote the plan and architecture decisions, ran the cross-team design session, and shipped the first version.</dd>
-          <dt>Approach</dt><dd>Pay for identity, governed data and PII access, LLM access, and deployment once at the platform level, with fail-closed access by default. A new app becomes a folder and a config file.</dd>
-        </dl>
-      </article>
-
-      <article class="case">
-        <div class="kicker">BILL · Fintech · Customer experience</div>
-        <h4>Turning an ignored decline problem into $3M a month</h4>
-        <p class="result">$25M payment-volume opportunity · $3M/month revenue increase</p>
-        <dl>
-          <dt>Problem</dt><dd>Failed customer payments were costing revenue and hurting the payment experience, and the problem had gotten little attention.</dd>
-          <dt>My role</dt><dd>Found it, built the business case, pitched it, and drove it end to end: models, interventions, and the production ML foundation underneath.</dd>
-          <dt>Approach</dt><dd>Predicted half of transaction declines ahead of time so the business could intervene. Built it on a monitored SageMaker and S3 data lake with drift detection, plus a Feature/Train/Inference/Production framework that made retraining repeatable company-wide.</dd>
-        </dl>
-      </article>
-
-    </div>
-  </section>
-
-  <section id="experience">
-    <h3 class="sec">Experience</h3>
-
-    <div class="job">
-      <div class="when">Feb 2026 – now</div>
-      <div>
-        <h4>Sr. AI Solutions Engineer &amp; Tech Lead</h4>
-        <div class="org">BambooHR · Salt Lake City</div>
-        <p class="sum">Internal forward-deployed AI engineer for CX, payroll, revenue, and operations teams, owning projects from discovery through deployment, adoption, and handoff. Tech lead across AI Ops projects and one of the team's lead architects since October 2026.</p>
-        <ul>
-          <li>Built an agent-based payroll anomaly-detection system with evals from day one, plus a lineage tool that lets payroll experts verify every rule against its source data.</li>
-          <li>Shipped document AI that extracts data from scanned, multi-format tax filings, checks it against a new client's payroll setup, and links every finding to its source.</li>
-          <li>Grew a customer-interaction intelligence pipeline from sentiment classification into product, service, and sales-expansion signals across phone, chat, support, and meetings.</li>
-          <li>Own an internal AI application platform that handles sign-in, access control, data and PII access, LLM access, and deployment once, so a new app is a folder and a config file instead of weeks of tickets.</li>
-          <li>Built a coding-agent curriculum for the technology org, launched an AI Champions program, and run workshops, hackathons, and leadership AI training.</li>
-        </ul>
+        <div class="edu">
+          <h3>Education</h3>
+          <h4>Master of Statistics</h4><p>University of Utah</p>
+          <h4>B.S. Mathematics and Statistics</h4><p>University of Utah</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="job">
-      <div class="when">Jan 2025 – Jan 2026</div>
-      <div>
-        <h4>Data Scientist II</h4>
-        <div class="org">BILL · Draper, UT</div>
-        <ul>
-          <li>Found an overlooked transaction-decline problem, built the business case, and drove it from pitch to production, surfacing a <strong>$25M total-payment-volume opportunity</strong> by predicting 50% of declines.</li>
-          <li>Deployed decline-intervention models that contributed to a <strong>$3M monthly revenue increase</strong> and a better customer payment experience.</li>
-          <li>Architected the production ML foundation (SageMaker, S3 data lake, monitoring, drift detection) and a company-wide Feature/Train/Inference/Production framework.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="when">Nov 2023 – May 2024</div>
-      <div>
-        <h4>Senior Data Scientist</h4>
-        <div class="org">Preston Ventures · Aliso Viejo, CA</div>
-        <ul>
-          <li>Engineered ETL and labeling pipelines and deployed validated healthcare models, with MLflow tracking for reproducibility across teams.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="when">Nov 2022 – Nov 2023</div>
-      <div>
-        <h4>Full Stack Data Scientist</h4>
-        <div class="org">Bayesian Health · New York, NY</div>
-        <ul>
-          <li>Built and deployed clinical decision-support models on EHR data into customer-facing apps, with state-machine decision logic and MLOps foundations (registries, monitoring, automated deploys).</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="when">Aug 2018 – Feb 2022</div>
-      <div>
-        <h4>Associate Data Scientist</h4>
-        <div class="org">BioFire Diagnostics · Salt Lake City</div>
-        <ul>
-          <li>Built a role-based, HIPAA-compliant data app, automated validation for customer-facing pipelines, and modernized analysis infrastructure on AWS.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="when">2017 – 2018</div>
-      <div>
-        <h4>Earlier</h4>
-        <div class="org">Intermountain Healthcare · RMCOEH</div>
-        <ul>
-          <li>Survival-analysis models for turnover risk and applied occupational-health research.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="principles">
-    <h3 class="sec">How I work</h3>
-    <ul class="principles">
-      <li>The model is rarely the hardest part. AI adoption speeds up when teams have a clear path from idea to a secure, supported product.</li>
-      <li>Building one useful AI system matters. Making the next ten easier to build is where the impact compounds.</li>
-      <li>Evals and human review from the start for anything that touches money or sensitive data.</li>
-    </ul>
-  </section>
-
-  <section id="notes">
-    <h3 class="sec">Notes</h3>
-    <div class="notes">
-      <a class="note-link" href="/notes/ai-enablement-is-platform-work"><h5>A surprising amount of AI enablement is platform engineering</h5><p>Why the model is rarely the hard part, and what a clear path to production looks like.</p></a>
-      <a class="note-link" href="/notes/code-review-waiting"><h5>The real cost of code review was the waiting</h5><p>What hundreds of pull requests showed me as a new tech lead.</p></a>
-      <a class="note-link" href="/notes/how-this-site-works"><h5>How this site works</h5><p>A small production AI app: grounding, guardrails, and a hard cost ceiling.</p></a>
-    </div>
-  </section>
-
-  <section>
-    <h3 class="sec">Skills</h3>
-    <dl class="skills">
-      <dt>Applied AI</dt><dd>AI agents, LLM applications, RAG, LLM evaluation, MCP, human-in-the-loop workflows, multi-tier classifiers</dd>
-      <dt>ML</dt><dd>Predictive modeling, anomaly detection, survival analysis, forecasting, A/B testing, MLOps</dd>
-      <dt>Engineering</dt><dd>Python, TypeScript, SQL, R · FastAPI · Docker, Kubernetes · AWS · Databricks, Snowflake, dbt, MLflow, Spark · Okta/OIDC · OpenTelemetry</dd>
-      <dt>Leadership</dt><dd>Technical leadership and architecture, AI enablement and training, cross-functional delivery, business cases</dd>
-      <dt>Domains</dt><dd>Customer experience, HR tech, fintech, healthcare</dd>
-    </dl>
-  </section>
-
-  <section>
-    <h3 class="sec">Education</h3>
-    <div class="grid">
-      <div class="card"><h5>Master of Statistics</h5><p>University of Utah</p></div>
-      <div class="card"><h5>B.S. Mathematics &amp; Statistics</h5><p>University of Utah</p></div>
-    </div>
-  </section>
-
-  <footer>
-    <span>© <span id="yr"></span> Michael Northrup</span>
-    <span><a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a> · <a href="https://github.com/michaelnorthrup/michael-ai">Site source</a></span>
-  </footer>
+  </div>
 </main>
+
+<footer class="closing band">
+  <div class="inner">
+    <div class="row">
+      <h2>Questions about my work, or want to compare notes on production AI?</h2>
+      <a class="btn solid" href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>
+    </div>
+    <div class="foot">
+      <span>© <span id="yr"></span> Michael Northrup · Salt Lake City</span>
+      <span><a href="https://www.linkedin.com/in/m-northrup/">LinkedIn</a> · <a href="https://github.com/michaelnorthrup/michael-ai">Site source</a></span>
+    </div>
+  </div>
+</footer>
 
 <script>
   document.getElementById("yr").textContent = new Date().getFullYear();
+  document.getElementById("print").addEventListener("click", () => window.print());
   const log = document.getElementById("log");
   const form = document.getElementById("form");
   const input = document.getElementById("input");
@@ -260,7 +246,7 @@
   }
   function add(role, text) {
     const el = document.createElement("div");
-    el.className = "msg " + (role === "user" ? "me" : "bot");
+    el.className = "msg " + (role === "user" ? "user" : "bot");
     el.innerHTML = role === "user" ? "<p>" + esc(text) + "</p>" : md(text);
     log.appendChild(el); log.scrollTop = log.scrollHeight;
     return el;
@@ -307,7 +293,7 @@
   document.getElementById("fitcancel").addEventListener("click", () => setFit(false));
   form.addEventListener("submit", e => { e.preventDefault(); ask(input.value); });
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
-  input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 140) + "px"; });
+  input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 160) + "px"; });
   chips.addEventListener("click", e => {
     if (!e.target.classList.contains("chip")) return;
     if (e.target.hasAttribute("data-fit")) setFit(true); else ask(e.target.textContent);

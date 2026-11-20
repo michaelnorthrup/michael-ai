@@ -12,16 +12,25 @@
 <meta property="og:description" content="A small production AI app: a Cloudflare Worker, Claude, a grounded profile, and the guardrails that keep it honest and cheap.">
 <meta property="og:image" content="https://mnorthrup.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b5710e'/><text x='16' y='22' font-family='Avenir,sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%231d2bd8'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:wght@500;600&display=swap">
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
-<main class="wrap">
-  <a class="back" href="/">← Michael Northrup</a>
+<header class="topbar band" style="padding-block:22px">
+  <div class="inner">
+    <nav class="nav" aria-label="Main">
+      <a class="name" href="/">Michael Northrup</a>
+      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask my AI</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main class="band">
   <article class="post">
-    <div class="eyebrow" style="margin-top:28px">Notes</div>
     <h1>How this site works</h1>
-    <div class="meta">November 2026 · 2 min read</div>
+    <div class="meta">November 2026, 2 min read</div>
 
     <p>The chat on this site is a small production AI application, so it gets the same treatment I'd give one at work: grounded answers, guardrails, and a hard ceiling on cost.</p>
 
@@ -49,7 +58,9 @@
 
     <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
   </article>
-  <footer><span>© 2026 Michael Northrup</span><a href="/">mnorthrup.com</a></footer>
 </main>
+<footer class="closing band" style="padding-block:28px">
+  <div class="inner"><div class="foot" style="margin-top:0;border-top:none;padding-top:0"><span>© 2026 Michael Northrup</span><span><a href="/">mnorthrup.com</a> · <a href="mailto:michael.northrup.data@gmail.com">Email</a></span></div></div>
+</footer>
 </body>
 </html>
