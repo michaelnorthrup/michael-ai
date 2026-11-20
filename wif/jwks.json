@@ -1,0 +1,13 @@
+{
+  "keys": [
+    {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "0BpWae_ZY9JVVltCs1-BGLgvuo5_LmARHxLydQbGyPU",
+      "y": "Fr4ySphA72i5VRnCQfrzE5LiUFlT2P1oNpPupxuHIx4",
+      "kid": "michael-ai-2026-11-20",
+      "alg": "ES256",
+      "use": "sig"
+    }
+  ]
+}

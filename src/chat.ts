@@ -1,10 +1,10 @@
-import Anthropic from '@anthropic-ai/sdk';
+import type Anthropic from '@anthropic-ai/sdk';
+import { anthropicClient, type AuthEnv } from './auth.js';
 import { PROFILE } from './profile.js';
 
-export interface Env {
+export interface Env extends AuthEnv {
   ASSETS: Fetcher;
   CHAT_LIMITER: RateLimit;
-  ANTHROPIC_API_KEY: string;
   CHAT_MODEL: string;
 }
 
@@ -56,13 +56,12 @@ export async function chat(request: Request, env: Env): Promise<Response> {
   const messages = cleanHistory(body.messages);
   if (!messages) return text('Bad request', 400);
 
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
-        const s = client.beta.messages.stream({
+        const s = anthropicClient(env).beta.messages.stream({
           model: env.CHAT_MODEL,
           max_tokens: 2000,
           betas: ['server-side-fallback-2026-07-01'],
