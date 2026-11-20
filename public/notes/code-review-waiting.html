@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The real cost of code review was the waiting — Michael Northrup</title>
-<meta name="description" content="What I learned studying hundreds of pull requests as a new tech lead, and why review effort should match risk.">
+<title>Where our code review time went — Michael Northrup</title>
+<meta name="description" content="A review of hundreds of pull requests, and a proposal to match review effort to the risk of a change.">
 <link rel="canonical" href="https://mnorthrup.com/notes/code-review-waiting">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mnorthrup.com/notes/code-review-waiting">
-<meta property="og:title" content="The real cost of code review was the waiting">
-<meta property="og:description" content="What I learned studying hundreds of pull requests as a new tech lead, and why review effort should match risk.">
+<meta property="og:title" content="Where our code review time went">
+<meta property="og:description" content="A review of hundreds of pull requests, and a proposal to match review effort to the risk of a change.">
 <meta property="og:image" content="https://mnorthrup.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%231d2bd8'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
@@ -23,32 +23,32 @@
   <div class="inner">
     <nav class="nav" aria-label="Main">
       <a class="name" href="/">Michael Northrup</a>
-      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask my AI</a></li></ul>
+      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask about my work</a></li></ul>
     </nav>
   </div>
 </header>
 <main class="band">
   <article class="post">
-    <h1>The real cost of code review was the waiting</h1>
-    <div class="meta">November 2026, 3 min read</div>
+    <h1>Where our code review time went</h1>
+    <div class="meta">November 2026 · 2 min read</div>
 
-    <p>When I stepped into a tech lead role, the first thing I wanted to understand was where our delivery time actually went. So I looked at the data.</p>
-    <p>I went through our team's history: hundreds of pull requests and more than a thousand review comments. The finding surprised me.</p>
+    <p>After becoming a tech lead, I studied our team’s code review history: hundreds of pull requests and more than a thousand review comments. I wanted to understand where delivery was slowing down.</p>
+    <p>Much of the elapsed time was spent waiting for a reviewer. Few pull requests received a formal request for changes, but almost every one went through the same queue.</p>
 
-    <h2>Reviewing wasn't the problem</h2>
-    <p>Very few pull requests ever had changes requested. The time went into the queue: almost every pull request sat waiting for someone to pick it up. We were paying the full cost of a careful review process on changes that rarely needed one.</p>
+    <h2>What the data can tell us</h2>
+    <p>Low rates of requested changes don’t prove reviews are unnecessary. A review may confirm a sound approach, catch something in a comment, or help a teammate understand the code. But the waiting time gave us a reason to look at which changes needed that process.</p>
 
-    <h2>Match review effort to risk</h2>
-    <p>That led to two proposals, which the team is still working through:</p>
+    <h2>Two proposals</h2>
     <ul>
-      <li><strong>Risk-based review levels.</strong> A throwaway spike doesn't need the same review as a first production launch. Define a few levels, from no review for experiments up to a full review before anything ships to production, and let the level decide the process.</li>
-      <li><strong>Standards short enough to follow.</strong> Our coding standards had grown into a long set of documents that neither people nor coding agents could realistically hold in their heads. The proposal condenses them into a short always-on core, rules scoped to the parts of the codebase they apply to, and checks in CI, so the standards are enforced by tooling instead of in review comments.</li>
+      <li><strong>Match review depth to risk.</strong> A disposable experiment and a first production launch need different checks. Define the expectations for each kind of work so that the team knows when to ask for a review and what the reviewer should examine.</li>
+      <li><strong>Make coding standards easier to apply.</strong> Keep a short core of rules, scope the rest to the files they concern, and automate the checks that CI can enforce. That leaves more review time for correctness, design, and operational risk.</li>
     </ul>
+    <p>These are proposals the team is still considering. We haven’t measured their effect on delivery time.</p>
 
-    <h2>The general lesson</h2>
-    <p>Speed and quality are usually framed as a trade-off. Most of the time, the real cost is a process that applies the same weight to every change. Invest in architecture and guardrails up front, then let people move fast inside them.</p>
+    <h2>What the analysis doesn’t show</h2>
+    <p>The review describes the current queue. It doesn’t establish how a different review policy would affect defects or rework. That would need to be measured after adoption.</p>
 
-    <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
+    <div class="post-cta">Want to know more? <a href="/#chat">Ask about my work</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
   </article>
 </main>
 <footer class="closing band" style="padding-block:28px">

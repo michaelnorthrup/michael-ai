@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How this site works — Michael Northrup</title>
-<meta name="description" content="A small production AI app: a Cloudflare Worker, Claude, a grounded profile, and the guardrails that keep it honest and cheap.">
+<meta name="description" content="How the résumé assistant uses a written profile, streams answers from Claude, and limits daily usage.">
 <link rel="canonical" href="https://mnorthrup.com/notes/how-this-site-works">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mnorthrup.com/notes/how-this-site-works">
 <meta property="og:title" content="How this site works">
-<meta property="og:description" content="A small production AI app: a Cloudflare Worker, Claude, a grounded profile, and the guardrails that keep it honest and cheap.">
+<meta property="og:description" content="How the résumé assistant uses a written profile, streams answers from Claude, and limits daily usage.">
 <meta property="og:image" content="https://mnorthrup.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%231d2bd8'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
@@ -23,40 +23,30 @@
   <div class="inner">
     <nav class="nav" aria-label="Main">
       <a class="name" href="/">Michael Northrup</a>
-      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask my AI</a></li></ul>
+      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask about my work</a></li></ul>
     </nav>
   </div>
 </header>
 <main class="band">
   <article class="post">
     <h1>How this site works</h1>
-    <div class="meta">November 2026, 2 min read</div>
+    <div class="meta">November 2026 · 2 min read</div>
 
-    <p>The chat on this site is a small production AI application, so it gets the same treatment I'd give one at work: grounded answers, guardrails, and a hard ceiling on cost.</p>
+    <p>This site is a résumé and a small AI application. The assistant lets you ask about my projects and experience without reading the whole page.</p>
 
-    <h2>Architecture</h2>
-    <ul>
-      <li><strong>One Cloudflare Worker</strong> serves the static page and a single <code>/api/chat</code> endpoint that streams answers from Claude.</li>
-      <li><strong>Grounding:</strong> the model answers only from a written profile of my background. If something isn't in it, the assistant says so and points you to email instead of guessing.</li>
-      <li><strong>Fit check:</strong> paste a job description and it maps requirements to evidence, then lists honest gaps. No scores, and instructions hidden inside a posting are ignored.</li>
-    </ul>
+    <h2>One Worker and a written profile</h2>
+    <p>A Cloudflare Worker serves the pages and a <code>/api/chat</code> endpoint that streams answers from Claude. The model receives a written profile of my background, maintained alongside the résumé.</p>
+    <p>Its instructions require it to answer from that profile, identify missing information, and refer questions to my email when needed. It speaks about me in the third person. AI answers can still be wrong.</p>
 
-    <h2>Guardrails</h2>
-    <ul>
-      <li>It won't discuss compensation or job-search status, and it won't invent employers, dates, or numbers.</li>
-      <li>Off-topic requests and attempts to override its instructions get a polite redirect.</li>
-      <li>It speaks about me in the third person and says plainly that it's an AI.</li>
-    </ul>
+    <h2>Usage limits</h2>
+    <p>A Durable Object tracks a global daily message count. A separate limit controls requests per IP address, and the server limits message length and conversation history. These constrain usage; they don’t set a fixed dollar budget.</p>
+    <p>Application logs record question text without adding an IP address to that entry. Please don’t include personal or confidential information in a question.</p>
 
-    <h2>Cost controls</h2>
-    <ul>
-      <li>A global daily message cap, enforced exactly across all servers by a Durable Object.</li>
-      <li>A per-visitor rate limit, size limits on messages and history, and short answers by default.</li>
-    </ul>
-    <p>Questions are logged anonymously, without IP addresses, so I can see what people ask and improve the answers.</p>
+    <h2>The visuals on the homepage</h2>
+    <p>The payroll example uses fictional data to illustrate source-linked findings and human review. The platform diagram is conceptual. Neither reproduces an internal product screen.</p>
     <p>The source is on <a href="https://github.com/michaelnorthrup/michael-ai">GitHub</a>.</p>
 
-    <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
+    <div class="post-cta">Want to know more? <a href="/#chat">Ask about my work</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
   </article>
 </main>
 <footer class="closing band" style="padding-block:28px">

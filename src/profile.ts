@@ -12,7 +12,7 @@ Email: michael.northrup.data@gmail.com
 LinkedIn: https://www.linkedin.com/in/m-northrup/
 
 ## Positioning
-Applied AI / forward-deployed solutions engineer and tech lead. He helps business teams turn ambiguous AI opportunities into secure, adopted production workflows, and builds the playbooks and capability that let other teams do the same. Roughly 8+ years across data science, ML engineering, and applied AI, in HR tech, fintech, and healthcare.
+AI engineer and tech lead at BambooHR. He works directly with internal business teams to scope, build, deploy, and hand off AI systems. He also builds shared infrastructure, documentation, and training for other teams. He has 8+ years across data science, ML engineering, and applied AI in HR tech, fintech, and healthcare.
 
 His forward-deployed work is internal: he embeds with business teams at his company (CX, payroll, revenue, operations) from discovery through adoption. He has not worked as an external client-facing FDE at a consulting firm; describe it accurately.
 
@@ -23,9 +23,9 @@ Shipped and in-flight work (described generically; internal names are not public
 - An agent-based payroll anomaly-detection system built with evals from the start (ReAct-style agent, human review), plus a rule-lineage tool that lets payroll experts verify every detection rule back to its source data columns. It passed its go/no-go review.
 - Document AI for payroll onboarding audits: LLMs extract data from scanned and multi-format tax filings, verify it against a new client's payroll setup, and link every finding to its source document. Auditors can review each rule in plain English and down to its source columns.
 - A customer-interaction intelligence pipeline that turns support, phone, chat, and client-meeting conversations into product, service, and sales-expansion signals (grew from sentiment classification into commercial lead signals).
-- An internal AI application platform that handles sign-in, access control, data and PII access, LLM access, and deployment once at the platform level, so a new app becomes a folder and a config file instead of weeks of tickets and hand-built plumbing. He owns this platform; its design was grounded in an audit of existing apps that found the same auth, session, and LLM-wrapper plumbing rebuilt many times.
+- An internal AI application platform that handles sign-in, access control, data and PII access, LLM access, and deployment once at the platform level. The goal is for a new app to need a folder and a configuration file, with the shared services already handled. He owns this platform. He audited the existing apps, designed the shared infrastructure, and built the first version. It is in staging, with app onboarding underway; do not describe it as fully rolled out in production.
 - A human-in-the-loop AI project-management companion that turns documents and meeting transcripts into reviewable decisions, risks, action items, status updates, and cross-project dependencies. It was productionized with SSO, a managed database, observability, and CI/CD.
-- Strategy and architecture for a knowledge and content program that unifies fragmented help-center and learning content into a governed source of truth for customer help, internal learning, and AI retrieval. Key insight he often shares: AI retrieval is only as trustworthy as the content operating model underneath it.
+- Strategy and architecture for a knowledge and content program that unifies fragmented help-center and learning content into a governed source of truth for customer help, internal learning, and AI retrieval. The work includes keeping source content maintained and governed so that AI retrieval has reliable material to use.
 - A secure, observable full-stack AI writing assistant (auth, rate limiting, caching, real cost tracking, metrics, autoscaling).
 - A reusable AI application launch playbook giving teams a rapid-experiment path and a production path, covering CI/CD, secrets, security review, data governance, service accounts, access control, monitoring, and launch, including the non-obvious failure modes he hit while shipping real apps.
 
@@ -33,7 +33,7 @@ Enablement and leadership:
 - Helped a portfolio of CX AI initiatives get through deployment, identity, data access, connectors, and production readiness, and coached project owners through discovery and scoping.
 - Built and delivered a multi-module coding-agent curriculum for the technology organization (environment setup, context management, Git, planning, verification, working with coding agents, AI code review). Co-delivered company-wide Claude Code training.
 - Launched an AI Champions program, ran recurring hands-on workshops (coding agents, agentic workflows, MCP), planned CX hackathons, and was brought into CX leadership AI training.
-- As tech lead: set a right-sized engineering approach (invest in architecture and guardrails up front, then move fast inside them), introduced risk tiers (prototype, internal tool, production) with their own definition of done, and studied the team's code-review data (hundreds of PRs, 1,000+ review comments), finding the cost was waiting for review rather than reviewing. He proposed risk-based review levels and a much leaner, CI-enforced coding standard. These are proposals, not yet adopted outcomes.
+- As tech lead: worked on architecture and development standards for the projects he leads, introduced risk tiers (prototype, internal tool, production) with their own definition of done, and studied the team's code-review data (hundreds of PRs, 1,000+ review comments), finding the cost was waiting for review rather than reviewing. He proposed risk-based review levels and a much leaner, CI-enforced coding standard. These are proposals, not yet adopted outcomes.
 - Ran a hiring loop and helped hire a Senior Data Scientist; mentors new team members.
 - Works across CX, Data Engineering, Payroll, Sales, Architecture, IT, Security, and Governance, translating AI ideas into the technical, data, security, and ownership decisions needed to run them.
 
@@ -54,7 +54,6 @@ Fintech; the role was entirely Customer Experience focused.
 - Developed and validated predictive models on electronic health record (EHR) data for clinical decision support.
 - Deployed models into customer-facing applications, with state-machine decision logic for real-time insights.
 - Built MLOps foundations: model registries, monitoring, automated deployment pipelines.
-- This is where his reliability mindset comes from: a model is only useful when it operates safely and clearly inside a real workflow.
 
 ## Associate Data Scientist, BioFire Diagnostics (Aug 2018 – Feb 2022, Salt Lake City)
 - Built a role-based web application giving teams secure access to sensitive healthcare data with HIPAA compliance.
@@ -78,15 +77,14 @@ Fintech; the role was entirely Customer Experience focused.
 - Domains: customer experience, HR/people tech, fintech, healthcare.
 
 ## Writing on this site
-- "A surprising amount of AI enablement is platform engineering": https://mnorthrup.com/notes/ai-enablement-is-platform-work
-- "The real cost of code review was the waiting": https://mnorthrup.com/notes/code-review-waiting
+- "What it takes to get an internal AI app running": https://mnorthrup.com/notes/ai-enablement-is-platform-work
+- "Where our code review time went": https://mnorthrup.com/notes/code-review-waiting
 - "How this site works" (the architecture, guardrails, and cost controls of this chat): https://mnorthrup.com/notes/how-this-site-works
 - Source code for this site: https://github.com/michaelnorthrup/michael-ai
 
-## How he works (themes he would stand behind)
-- The model is rarely the hardest part. AI adoption speeds up when teams have a clear path from idea to a secure, supported product.
-- Building one useful AI system matters; making the next ten easier to build is where impact compounds.
-- Good enablement is not doing every project for people. It is creating a path they can follow without rediscovering every hidden failure.
-- Thin-deploy-first: get a minimal service building, passing security gates, and answering a health check before adding databases, auth, and live data.
-- Evals and human review from the start for anything that touches money or sensitive data.
+## How he works
+- Work directly with the people doing the job. Use their feedback during development and help them adopt and maintain the system.
+- Use evaluations and human review for work involving money or sensitive data. Link findings to their sources so reviewers can check them.
+- Put repeated setup into shared infrastructure, documentation, and training.
+- Get a minimal service building, passing security checks, and answering a health check before adding databases, authentication, and live data.
 `.trim();

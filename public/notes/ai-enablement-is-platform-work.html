@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A surprising amount of AI enablement is platform engineering — Michael Northrup</title>
-<meta name="description" content="Why the model is rarely the hard part of shipping internal AI apps, and what a clear path to production looks like.">
+<title>What it takes to get an internal AI app running — Michael Northrup</title>
+<meta name="description" content="What I learned helping business teams deploy AI applications, and why I started building shared infrastructure.">
 <link rel="canonical" href="https://mnorthrup.com/notes/ai-enablement-is-platform-work">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mnorthrup.com/notes/ai-enablement-is-platform-work">
-<meta property="og:title" content="A surprising amount of AI enablement is platform engineering">
-<meta property="og:description" content="Why the model is rarely the hard part of shipping internal AI apps, and what a clear path to production looks like.">
+<meta property="og:title" content="What it takes to get an internal AI app running">
+<meta property="og:description" content="What I learned helping business teams deploy AI applications, and why I started building shared infrastructure.">
 <meta property="og:image" content="https://mnorthrup.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%231d2bd8'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
@@ -23,31 +23,29 @@
   <div class="inner">
     <nav class="nav" aria-label="Main">
       <a class="name" href="/">Michael Northrup</a>
-      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask my AI</a></li></ul>
+      <ul><li><a href="/#work">Work</a></li><li><a href="/#notes">Notes</a></li><li><a href="/#chat">Ask about my work</a></li></ul>
     </nav>
   </div>
 </header>
 <main class="band">
   <article class="post">
-    <h1>A surprising amount of AI enablement is platform engineering</h1>
-    <div class="meta">November 2026, 3 min read</div>
+    <h1>What it takes to get an internal AI app running</h1>
+    <div class="meta">November 2026 · 2 min read</div>
 
-    <p>Over the past year I've helped teams across customer experience move a portfolio of AI ideas toward real use. The pattern I keep seeing is that the model is rarely the hardest part. What stops most projects is everything around it.</p>
-    <p>A promising prototype needs a repository, CI/CD, secrets, sign-in, access control, a governed path to customer data, service accounts, routing, monitoring, and someone who owns it in production. Each of those is a ticket, an approval, or a configuration file someone has to get exactly right. Most teams building their first AI app had never done any of it.</p>
+    <p>Helping teams deploy AI apps at BambooHR meant working through the same setup repeatedly: repositories, CI/CD, secrets, sign-in, access control, data connections, and monitoring. Teams had a working prototype but needed help getting it onto supported infrastructure.</p>
+    <p>That became a substantial part of my job. I worked with business teams, data engineering, security, and IT to figure out what each app needed and who would own it after launch.</p>
 
-    <h2>The failures were silent</h2>
-    <p>The worst part wasn't the amount of work. It was that many steps fail quietly. A platform default that is switched off. Configuration that lives in a separate repository nobody mentioned. An infrastructure change that was written but never applied. A DNS record that doesn't exist yet. An access group that nobody added the users to. Each one is easy to fix once you know about it, and every new team was rediscovering them.</p>
+    <h2>Write down the deployment steps</h2>
+    <p>Some of the longest delays came from small, undocumented dependencies. A setting was disabled by default. Configuration lived in a separate repository. An infrastructure change hadn’t been applied. Once we found the cause, the fix was often straightforward. Finding it took time.</p>
+    <p>I put the steps into a launch playbook, including the failures I had encountered. It gives teams an experimentation route for testing an idea and a production route for apps that need durable data, sensitive integrations, or wider use.</p>
+    <p>I also started deploying a minimal service first. Get it building, passing security checks, and answering a health check before adding databases, authentication, and live data. That makes deployment problems easier to isolate.</p>
 
-    <h2>Two paths, written down</h2>
-    <p>So I wrote it down as a launch playbook with two clear paths. If you're testing an idea, move quickly on a constrained experimentation platform and don't pay for production yet. If the app needs durable data, sensitive integrations, or broad adoption, take the full production route, and here is every step, in order, including the failure modes I verified while shipping real apps.</p>
-    <p>One pattern from that work I now use everywhere: <strong>deploy thin first</strong>. Get a minimal service building, passing security gates, and answering a health check before you add databases, authentication, and live data. When something breaks, you know it's the deployment and not your app.</p>
+    <h2>Move repeated work into the platform</h2>
+    <p>The playbook helped, but each team still had to do much of the setup. After auditing our existing apps, I designed an internal platform to share identity, governed data access, LLM access, and deployment.</p>
+    <p>The first version is in staging, with app onboarding underway. The goal is for a new app to need a folder and a configuration file, with the shared services already handled.</p>
+    <p>I still expect teams to need help with their data, application design, and rollout. They should be able to spend more of that time on the work specific to their app.</p>
 
-    <h2>Then make the path disappear</h2>
-    <p>A playbook helps people follow the path. The better move is to remove most of it. That's why I now own an internal AI application platform that handles sign-in, access, governed data and PII access, LLM access, and deployment once, at the platform level. A new app becomes a folder and a config file instead of weeks of tickets.</p>
-
-    <blockquote>Good enablement is not doing every project for people. It is creating a path they can follow without rediscovering every hidden failure themselves.</blockquote>
-
-    <div class="post-cta">Questions about this? <a href="/#chat">Ask my AI</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
+    <div class="post-cta">Want to know more? <a href="/#chat">Ask about my work</a>, or email <a href="mailto:michael.northrup.data@gmail.com">michael.northrup.data@gmail.com</a>.</div>
   </article>
 </main>
 <footer class="closing band" style="padding-block:28px">
