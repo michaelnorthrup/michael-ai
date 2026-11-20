@@ -63,7 +63,7 @@ Fintech; the role was entirely Customer Experience focused.
 
 ## Earlier
 - Data Science Intern, Intermountain Healthcare (summer 2017): survival-analysis models for employee-turnover risk that informed a retention program; presented to non-technical audiences.
-- Research Assistant, Rocky Mountain Center for Occupational and Environmental Health (2017–2018): statistical analysis in R and SQL, literature reviews, survival analysis of job-turnover risk factors.
+- Research Assistant, Rocky Mountain Center for Occupational and Environmental Health at the University of Utah (2017–2018): statistical analysis in R and SQL, literature reviews, survival analysis of job-turnover risk factors.
 
 ## Education
 - Master of Statistics, University of Utah

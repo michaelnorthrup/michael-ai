@@ -12,6 +12,10 @@ workers_dev = true
 
 # Static résumé page. The Worker only handles /api/*; everything else is
 # served straight from ./public.
+# Workers Logs: request logs plus the anonymous question log from src/chat.ts.
+[observability]
+enabled = true
+
 [assets]
 directory = "./public"
 binding = "ASSETS"

@@ -3,8 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Michael Northrup — Applied AI Engineer</title>
-<meta name="description" content="Michael Northrup: forward-deployed applied AI engineer and tech lead. Ask an AI about his background, or read the résumé.">
+<title>Michael Northrup — Forward-Deployed AI Engineer</title>
+<meta name="description" content="Forward-deployed AI engineer and tech lead. Ships production AI systems with evals and human review, and the platforms that let other teams do the same. Ask an AI about his background.">
+<link rel="canonical" href="https://michael-ai.michael-northrup.workers.dev/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://michael-ai.michael-northrup.workers.dev/">
+<meta property="og:title" content="Michael Northrup — Forward-Deployed AI Engineer">
+<meta property="og:description" content="Production AI systems, from discovery to adoption. Ask the AI about his work, or paste a job description to check fit.">
+<meta property="og:image" content="https://michael-ai.michael-northrup.workers.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Michael Northrup","jobTitle":"Sr. AI Solutions Engineer & Tech Lead","url":"https://michael-ai.michael-northrup.workers.dev/","email":"mailto:michael.northrup.data@gmail.com","sameAs":["https://www.linkedin.com/in/m-northrup/"],"address":{"@type":"PostalAddress","addressLocality":"Salt Lake City","addressRegion":"UT"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Utah"},"knowsAbout":["Forward-deployed engineering","Applied AI","AI agents","LLM evaluation","RAG","MCP","Human-in-the-loop workflows","AI platform architecture","MLOps","Python","TypeScript"]}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b5710e'/><text x='16' y='22' font-family='Avenir,sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23fff'>MN</text></svg>">
 <style>
   :root {
@@ -123,9 +135,38 @@
   .skills dd { margin: 0; color: var(--muted); font-size: 0.96rem; }
   .principles { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
   .principles li { padding-left: 18px; border-left: 2px solid var(--accent); font-size: 1.04rem; }
+  .cases { display: grid; gap: 16px; }
+  .case { background: var(--panel); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px 26px; }
+  .case .kicker { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .case h4 { font-family: var(--font-head); font-size: 1.28rem; font-weight: 600; letter-spacing: -0.015em; margin: 6px 0 4px; line-height: 1.25; }
+  .case .result { font-family: var(--font-head); font-weight: 600; color: var(--accent-ink); font-size: 1rem; margin: 0 0 14px; }
+  .case dl { display: grid; grid-template-columns: 92px 1fr; gap: 8px 18px; margin: 0; }
+  .case dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .case dd { margin: 0; font-size: 0.98rem; }
+  .chip.fit { color: var(--accent-ink); border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+  .fitbar { display: none; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 16px; font-family: var(--font-head); font-size: 0.82rem; color: var(--accent-ink); background: var(--accent-soft); border-top: 1px solid var(--hairline); }
+  .fitbar button { border: none; background: none; color: var(--muted); font: inherit; cursor: pointer; text-decoration: underline; }
+  .chat.fitmode .fitbar { display: flex; }
+  .chat.fitmode textarea { min-height: 120px; }
   footer { margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--hairline); font-family: var(--font-head); font-size: 0.85rem; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
+  @media print {
+    @page { margin: 0.55in; }
+    body { background: #fff; color: #000; font-size: 10.5pt; }
+    .wrap { max-width: none; padding: 0; }
+    .chat, .links, footer, #work, #principles { display: none !important; }
+    .stats { margin-top: 14px; }
+    section { margin-top: 18px; break-inside: auto; }
+    .job { padding: 8px 0; break-inside: avoid; }
+    h1 { font-size: 24pt; margin-top: 8px; }
+    .lede { font-size: 11pt; color: #222; }
+    .print-contact { display: block !important; font-family: var(--font-head); font-size: 9.5pt; margin-top: 6px; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .print-contact { display: none; }
   @media (max-width: 640px) {
+    .case dl { grid-template-columns: 1fr; gap: 2px; }
+    .case dd { margin-bottom: 8px; }
     .stats { grid-template-columns: 1fr; }
     .job, .skills { grid-template-columns: 1fr; }
     .grid { grid-template-columns: 1fr; }
@@ -146,8 +187,10 @@
       <a class="btn primary" href="#chat">Ask my AI</a>
       <a class="btn" href="mailto:michael.northrup.data@gmail.com">Email</a>
       <a class="btn" href="https://www.linkedin.com/in/m-northrup/" id="linkedin">LinkedIn</a>
-      <a class="btn" href="#experience">Résumé</a>
+      <a class="btn" href="#work">Selected work</a>
+      <button class="btn" type="button" onclick="window.print()">Résumé PDF</button>
     </div>
+    <div class="print-contact">michael.northrup.data@gmail.com · linkedin.com/in/m-northrup · Salt Lake City, UT</div>
     <div class="stats">
       <div class="stat"><b>$25M</b><span>payment-volume opportunity surfaced by predicting half of transaction declines</span></div>
       <div class="stat"><b>$3M/mo</b><span>revenue increase from decline-intervention models I shipped</span></div>
@@ -168,18 +211,59 @@
       <div class="msg bot"><p>Hi! I'm an AI assistant that knows Michael's background. Ask me about his experience, what he's built, how he works, or his skills.</p></div>
     </div>
     <div class="chips" id="chips">
+      <button class="chip fit" data-fit>Paste a job description to check fit</button>
       <button class="chip">What has he shipped recently?</button>
       <button class="chip">Tell me about the $25M BILL project</button>
       <button class="chip">What's his forward-deployed experience?</button>
-      <button class="chip">How does he approach AI enablement?</button>
       <button class="chip">What's his tech stack?</button>
     </div>
+    <div class="fitbar"><span>Fit check: paste the full job description and press Send.</span><button type="button" id="fitcancel">Cancel</button></div>
     <form id="form">
       <textarea id="input" rows="1" maxlength="800" placeholder="Ask anything about Michael's background…" aria-label="Your question"></textarea>
       <button class="send" id="send" type="submit">Send</button>
     </form>
-    <p class="disclaimer">AI-generated answers can be imperfect. For anything important, email Michael directly.</p>
+    <p class="disclaimer">AI-generated answers can be imperfect; for anything important, email Michael. Questions are logged anonymously to improve answers.</p>
   </div>
+
+  <section id="work">
+    <h3 class="sec">Selected work</h3>
+    <div class="cases">
+
+      <article class="case">
+        <div class="kicker">BILL · Fintech · Customer experience</div>
+        <h4>Turning an ignored decline problem into $3M a month</h4>
+        <p class="result">$25M payment-volume opportunity · $3M/month revenue increase</p>
+        <dl>
+          <dt>Problem</dt><dd>Failed customer payments were costing revenue and hurting the payment experience, and the problem had gotten little attention.</dd>
+          <dt>My role</dt><dd>Found it, built the business case, pitched it, and drove it end to end: models, interventions, and the production ML foundation underneath.</dd>
+          <dt>Approach</dt><dd>Predicted half of transaction declines ahead of time so the business could intervene. Built it on a monitored SageMaker and S3 data lake with drift detection, plus a Feature/Train/Inference/Production framework that made retraining repeatable company-wide.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div class="kicker">BambooHR · Payroll · Agents and evals</div>
+        <h4>An AI auditor that payroll experts can actually check</h4>
+        <p class="result">Passed go/no-go review · method reused for a second audit product</p>
+        <dl>
+          <dt>Problem</dt><dd>Payroll mistakes are expensive and experts can't review everything. An AI that flags anomalies is useless if the experts can't see why.</dd>
+          <dt>My role</dt><dd>Wrote the spec, built the system, and worked it through rounds of feedback with payroll specialists.</dd>
+          <dt>Approach</dt><dd>An agent-based anomaly detector with evals from day one and human review of every finding. Built a lineage tool that lets experts verify each detection rule down to its source data, with sign-offs reset whenever a rule changes. Reused the same method for document AI that reads a new client's tax filings, checks them against their payroll setup, and links every finding to its source.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div class="kicker">BambooHR · Platform · Architecture</div>
+        <h4>Making the next AI app a folder, not weeks of tickets</h4>
+        <p class="result">Platform owner · first version live in staging, first apps moving on</p>
+        <dl>
+          <dt>Problem</dt><dd>Every internal AI app rebuilt the same sign-in, access control, data and PII access, LLM access, and deployment, and waited weeks on the same approvals.</dd>
+          <dt>My role</dt><dd>Owner and architect. Audited the existing apps, wrote the plan and architecture decisions, ran the cross-team design session, and shipped the first version.</dd>
+          <dt>Approach</dt><dd>Pay for identity, governed data and PII access, LLM access, and deployment once at the platform level, with fail-closed access by default. A new app becomes a folder and a config file.</dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
 
   <section id="experience">
     <h3 class="sec">Experience</h3>
@@ -258,7 +342,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="principles">
     <h3 class="sec">How I work</h3>
     <ul class="principles">
       <li>The model is rarely the hardest part. AI adoption speeds up when teams have a clear path from idea to a secure, supported product.</li>
@@ -331,7 +415,13 @@
   async function ask(q) {
     q = q.trim(); if (!q || busy) return;
     busy = true; send.disabled = true; chips.style.display = "none";
-    add("user", q); history.push({ role: "user", content: q });
+    if (fitMode) {
+      add("user", "Check Michael's fit for this role: " + (q.length > 140 ? q.slice(0, 140) + "…" : q));
+      history.push({ role: "user", content: "JOB DESCRIPTION:\n" + q });
+      setFit(false);
+    } else {
+      add("user", q); history.push({ role: "user", content: q });
+    }
     input.value = ""; input.style.height = "";
     const el = add("bot", ""); el.classList.add("typing");
     let text = "";
@@ -352,10 +442,22 @@
     busy = false; send.disabled = false; input.focus();
   }
 
+  const chat = document.getElementById("chat");
+  let fitMode = false;
+  function setFit(on) {
+    fitMode = on; chat.classList.toggle("fitmode", on);
+    input.maxLength = on ? 6000 : 800;
+    input.placeholder = on ? "Paste the job description here…" : "Ask anything about Michael's background…";
+    if (on) { chips.style.display = "none"; input.focus(); }
+  }
+  document.getElementById("fitcancel").addEventListener("click", () => setFit(false));
   form.addEventListener("submit", e => { e.preventDefault(); ask(input.value); });
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 140) + "px"; });
-  chips.addEventListener("click", e => { if (e.target.classList.contains("chip")) ask(e.target.textContent); });
+  chips.addEventListener("click", e => {
+    if (!e.target.classList.contains("chip")) return;
+    if (e.target.hasAttribute("data-fit")) setFit(true); else ask(e.target.textContent);
+  });
 </script>
 </body>
 </html>
