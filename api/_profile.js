@@ -9,6 +9,7 @@ export const PROFILE = `
 
 Location: Salt Lake City, Utah.
 Email: michael.northrup.data@gmail.com
+LinkedIn: https://www.linkedin.com/in/m-northrup/
 
 ## Positioning
 Applied AI / forward-deployed solutions engineer and tech lead. He helps business teams turn ambiguous AI opportunities into secure, adopted production workflows, and builds the playbooks and capability that let other teams do the same. Roughly 8+ years across data science, ML engineering, and applied AI, in HR tech, fintech, and healthcare.
